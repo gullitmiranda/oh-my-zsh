@@ -17,4 +17,5 @@ else
   PORT="$1"
 fi
 
-rvm 1.9.3 do thin --rackup $SCRIPTS_PATH/lib/static.ru --port $PORT start
+export RBENV_VERSION="1.9.3-p194"
+thin --rackup $SCRIPTS_PATH/lib/static.ru --port $PORT start
