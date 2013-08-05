@@ -4,7 +4,9 @@ if [[ $SO_VERSION = "Cygwin" ]]; then
   git_prompt_info () { }
 fi
 
-PROMPT='%{$fg_bold[red]%}➜  %{$fg[$NCOLOR]%}%B%m@%n%b%{$reset_color%}:%{$fg_bold[green]%}%B%~/%b%{$reset_color%} $(git_prompt_info)
+# ➜ ☕➡⬅#⃣
+# PROMPT='%{$fg_bold[red]%} ➜ %{$fg[$NCOLOR]%}%B%m@%n%b%{$reset_color%}:%{$fg_bold[green]%}%B%~/%b%{$reset_color%} $(git_prompt_info)
+PROMPT='%{$fg_bold[red]%} ➜ %{$fg[$NCOLOR]%}%Beverton@azuki%{$reset_color%}:%{$fg_bold[green]%}%B%~/%b%{$reset_color%} $(git_prompt_info)
 %(!.#.$) '
 RPROMPT='[%{$fg_bold[red]%}%*%{$reset_color%}]'
 
