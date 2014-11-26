@@ -78,17 +78,23 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+bindkey -e
 
+# Word Jump
+bindkey '^[[1;9C' forward-word
+bindkey '^[[1;9D' backward-word
+
+# Line limits jumping
+"\eYOURSEQUENCE": beginning-of-line
+"\eYOURSEQUENCE": end-of-line
+
+# Arrow search
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
 bindkey '^[OA' history-beginning-search-backward
 bindkey '^[OB' history-beginning-search-forward
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
-
-bindkey -e
-bindkey '^[[1;9C' forward-word
-bindkey '^[[1;9D' backward-word
 
 
 if [ -d "$HOME/.local/bin" ]; then
