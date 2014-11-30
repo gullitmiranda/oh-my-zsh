@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -79,8 +79,16 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias finder='/System/Library/CoreServices/Finder.app'
+
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+
+if [ -f "/usr/local/bin/azk" ]; then
+  alias bazk='/usr/local/bin/azk'
+fi
+
+alias wcd='cd /www/'
 
 
 bindkey -e
@@ -90,8 +98,10 @@ bindkey '^[[1;9C' forward-word
 bindkey '^[[1;9D' backward-word
 
 # Line limits jumping
-"\eYOURSEQUENCE": beginning-of-line
-"\eYOURSEQUENCE": end-of-line
+bindkey '\033f' beginning-of-line
+bindkey '\033e' end-of-line
+# bindkey "\e[1~" beginning-of-line
+# bindkey "\e[4~" end-of-line
 
 # Arrow search
 bindkey '\e[A' history-beginning-search-backward
@@ -112,9 +122,9 @@ fi
 
 
 if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-	source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+  source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 elif [[ -r /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-	source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+  source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 elif [[ -r /Library/Python/2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-	source /Library/Python/2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+  source /Library/Python/2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
