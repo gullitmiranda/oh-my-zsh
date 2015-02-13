@@ -113,10 +113,6 @@ fi
 alias wcd='cd ~/www/'
 
 
-if [ -f "/usr/local/bin/azk" ]; then
-  alias bazk='/usr/local/bin/azk'
-fi
-
 if [ -d "$HOME/.local/bin" ]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
@@ -125,11 +121,18 @@ if [ -d "$HOME/.azk/bin" ]; then
   export PATH="$HOME/.azk/bin:$PATH"
 fi
 
+if [ -f "/usr/local/bin/azk" ]; then
+  alias bazk='/usr/local/bin/azk'
+fi
 
-if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-  source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-elif [[ -r /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-  source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-elif [[ -r /Library/Python/2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-  source /Library/Python/2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+if [[ -r ~/.local/lib/python2.7/site-packages/ ]]; then
+  export PYTHON_PACKAGE="$HOME/.local/lib/python2.7/site-packages/"
+elif [[ -r /usr/local/lib/python2.7/site-packages/ ]]; then
+  export PYTHON_PACKAGE="/usr/local/lib/python2.7/site-packages/"
+elif [[ -r /Library/Python/2.7/site-packages/ ]]; then
+  export PYTHON_PACKAGE="/Library/Python/2.7/site-packages"
+fi
+
+if [[ -e "$PYTHON_PACKAGE/powerline/bindings/zsh/powerline.zsh" ]]; then
+  source $PYTHON_PACKAGE/powerline/bindings/zsh/powerline.zsh
 fi
