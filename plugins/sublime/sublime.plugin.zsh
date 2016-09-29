@@ -40,4 +40,22 @@ elif  [[ "$OSTYPE" = darwin* ]]; then
     done
 fi
 
+open_with_sublime() {
+  if [[ $# -gt 0 ]]; then
+    project_path=${1}
+    shift;
+  else
+    project_path="`pwd`"
+  fi
+
+  project_file="${project_path}/`basename "${project_path}"`.sublime-project"
+
+  if [[ -f "${project_file}" ]]; then
+    project_path=${project_file}
+  fi
+
+  subl "${project_path}" ${@}
+}
+
+alias ss="open_with_sublime"
 alias stt='st .'
